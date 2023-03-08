@@ -4,6 +4,10 @@ services:
 
   web-app:
     build: .
+  apache2:
+    image: httpd
+    ports:
+      - 80
 
   oauth2-proxy:
     image: bitnami/oauth2-proxy:7.3.0
@@ -17,7 +21,7 @@ services:
       OAUTH2_PROXY_PROVIDER: oidc 
       OAUTH2_PROXY_PROVIDER_DISPLAY_NAME: Okta
       OAUTH2_PROXY_SKIP_PROVIDER_BUTTON: true 
-      OAUTH2_PROXY_REDIRECT_URL: http://localhost/oauth2/callback 
+      OAUTH2_PROXY_REDIRECT_URL: http://localhost/oauth2/callback
 
       OAUTH2_PROXY_OIDC_ISSUER_URL: ${OIDC_ISSUER_URL}
       OAUTH2_PROXY_CLIENT_ID: ${CLIENT_ID}
